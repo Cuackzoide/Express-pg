@@ -29,8 +29,10 @@ const getCursosProgramacionLenguaje = async (req, res) => {
         // En lugar de pegar el texto directamente ("... lenguaje = '" + lenguaje + "'"), usamos $1.
         // El driver 'pg' sustituye $1 por el primer valor del array que pasamos como segundo argumento.
         // Esto evita ataques de Hackers llamados "Inyección SQL".
+        // Usamos ILIKE (Insensitive LIKE) para que no importen las mayúsculas/minúsculas
+        // Asi 'python' encuentra 'Python', 'PYTHON', etc.
         const respuesta = await pool.query(
-            "SELECT * FROM cursos WHERE categoria = 'programacion' AND lenguaje = $1",
+            "SELECT * FROM cursos WHERE categoria = 'programacion' AND lenguaje ILIKE $1",
             [lenguaje]
         );
 

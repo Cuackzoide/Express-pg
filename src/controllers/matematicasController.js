@@ -16,8 +16,9 @@ const getCursosMatematicasLenguaje = async (req, res) => {
     const lenguaje = req.params.lenguaje;
     try {
         // Consulta segura con parámetro $1
+        // Usamos ILIKE para búsquedas insensibles a mayúsculas
         const respuesta = await pool.query(
-            "SELECT * FROM cursos WHERE categoria = 'matematicas' AND lenguaje = $1",
+            "SELECT * FROM cursos WHERE categoria = 'matematicas' AND lenguaje ILIKE $1",
             [lenguaje]
         );
 
