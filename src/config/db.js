@@ -1,7 +1,16 @@
 const { Pool } = require('pg');
 
-// La configuración se lee automáticamente de las variables de entorno en el archivo .env
-// (DB_USER, DB_HOST, DB_PASSWORD, DB_DATABASE, DB_PORT)
-const pool = new Pool();
+// Configuración:
+// DATABASE_URL (Producción/Render + Neon), uso con soporte SSL.
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL || undefined,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT,
+    ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
+});
 
 module.exports = pool;
