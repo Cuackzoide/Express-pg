@@ -66,9 +66,10 @@ DB_NAME=nombre_bd
 pnpm start
 ```
 🎯 Endpoints Disponibles
+|      |                       |                  | 
 |:-----|:----------------------|:-----------------|
-|GET / | Da mensaje de bienvenida | "Welcome to courses API"
-|GET /api/cursos | Retorna la lista completa de cursos disponibles en la base de datos. | todos
+|GET / | Da mensaje de bienvenida | "Welcome to courses API" |
+|GET /api/cursos | Retorna la lista completa de cursos disponibles en la base de datos. | todos |
 |GET /api/cursos/:tipo | Retorna el detalle por tipo de curso | programacion o matematicas |
 |GET /api/cursos/:tipo/:tema | Retorna el detalle por tema | javascript y python ó calculo y algebra |
 
